@@ -2,6 +2,8 @@
 
 Live covid-19 tracker
 
+https://covid-19-bd.herokuapp.com/
+
 **Covid -19 api https://github.com/javieraviles/covidAPI
 
 
