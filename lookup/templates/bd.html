@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<h1 class="display-3 text-light ">Bangladesh</h1>
+
+{% if api %}
+{% if api == "Error..." %}
+<p>There was an error, please try again..</p>
+{% else %}
+<table>
+    <tbody id="myTable">
+        <tr>
+            <td style="width: 100rem;">
+                <div id="myDIV">
+                    <div class="card text-white mb-3" style="background-color: rgb(23, 23, 24);">
+                        <div class="card-body">
+                            <div class="h4" style="color: #A0A0A0;">Cases: {{ api.cases }} | Today:
+                                {{ api.todayCases }} |
+                                Active:
+                                {{ api.active }} </div>
+
+                            <div class="h4" style="color: #A0A0A0;"> Deaths: <span
+                                    style="color: rgb(236, 0, 0);">{{ api.deaths }}</span> |
+                                Today:
+                                <span style="color: rgb(236, 0, 0);">{{ api.todayDeaths }}</span></div>
+
+
+                            <div class="h4" style="color: #A0A0A0;">Recovered: <span
+                                    style="color: rgb(7, 255, 81);">{{ api.recovered }}</span>
+                                | Critical:
+                                <span style="color: rgb(255, 224, 51);">{{ api.critical }}</span></div>
+                        </div>
+                    </div>
+                </div>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+{% endif %}
+{% endif %}
+
+{% endblock %}

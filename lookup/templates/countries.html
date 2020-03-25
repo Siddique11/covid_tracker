@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+<!-- {% if api %}
+{% if api == "Error..." %}
+There was an error, please try again..
+{% else %}
+Air Quality: {{ api.0.AQI }} <br>
+Area : {{ api.0.ReportingArea }} <br>
+Category: {{ api.0.Category.Name }} <br> <br>
+{% endif %}
+{% endif %} -->
+<h1 class="display-3 text-light ">Countries</h1>
+
+<div class="row">
+    <div class="col-md-12">
+
+        <div class="input-group ">
+            <input id="myInput" type="text" placeholder="Search" class="form-control"
+                style="background-color: #121212;color: white;">
+        </div>
+    </div>
+</div>
+
+{% if api %}
+{% if api == "Error..." %}
+<p>There was an error, please try again..</p>
+{% else %}
+{% for i in load_api %}
+<table>
+    <tbody id="myTable">
+        <tr>
+            <td style="width: 100rem;">
+                <div id="myDIV">
+                    <div class="card text-white mb-3" style="background-color: rgb(23, 23, 24);">
+                        <div class="card-body">
+                            <div class="h4">{{ i.country }}</div>
+                            <p class="card-text" style="color: #A0A0A0;">Cases: {{ i.cases }} | Today:
+                                {{ i.todayCases }} |
+                                Active:
+                                {{ i.active }} <br>
+                                Deaths: <span style="color: rgb(236, 0, 0);">{{ i.deaths }}</span> | Today:
+                                <span style="color: rgb(236, 0, 0);">{{ i.todayDeaths }}</span> <br>
+                                Recovered: <span style="color: rgb(7, 255, 81);">{{ i.recovered }}</span> | Critical:
+                                <span style="color: rgb(255, 224, 51);">{{ i.critical }}</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </td>
+        </tr>
+    </tbody>
+</table>
+{% endfor %}
+
+{% endif %}
+{% endif %}
+
+
+
+
+
+
+
+
+{% endblock %}

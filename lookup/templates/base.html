@@ -1,7 +1,13 @@
+{% load static %}
 <!doctype html>
 <html lang="en">
 
 <head>
+    <style>
+        body {
+            padding-top: 70px;
+        }
+    </style>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -9,38 +15,48 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
-    <title>Hello, world!</title>
+    <link rel="icon" type="image/png" href="{% static 'todo/logo.png' %}">
+    <title>Covid-19 Tracker</title>
 </head>
 
-<body>
-    <nav class="navbar navbar-expand-lg navbar-dark purple-gradient"
-        style="background-image: linear-gradient(15deg, #667eea  0%, #764ba2 100%);">
-        <a class="navbar-brand" href="{% url 'home' %}">Weather app</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+<body style="background-color: #1A1B1E;">
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top" style="background-color: #121212;">
+        <div class="container">
+            <a class="navbar-brand" href="{% url 'home' %}">
+                <img src="{% static 'todo/logo.png' %}" width="30" height="30" class="d-inline-block align-top">
+                <span>Corona</span>
+            </a>
 
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'about' %}">About me</a>
-                </li>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
 
-            </ul>
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-primary" my-2 my-sm-0" type="submit">Search</button>
-            </form>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'countries' %}">Countries</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'Bangladesh' %}">Bangladesh</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'about' %}">About me</a>
+                    </li>
+                </ul>
+            </div>
+
         </div>
     </nav>
-    <br>
+
     <div class="container">
+
         {% block content %}{% endblock %}
     </div>
+
+
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
@@ -52,4 +68,15 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
         crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function () {
+            $("#myInput").on("keyup", function () {
+                var value = $(this).val().toLowerCase();
+                $("#myTable tr").filter(function () {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+    </script>
+
 </body>

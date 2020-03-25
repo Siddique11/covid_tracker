@@ -2,5 +2,38 @@
 
 
 {% block content %}
-<h1>Hello world</h1>
+<h1 class="display-3 text-light ">Global Information</h1>
+<div class="card text-white mb-3" style="background-color: rgb(23, 23, 24);">
+    <div class="card-body">
+        <p style="color: #A0A0A0;">Global</p>
+        <div class="h5">Coronavirus cases:</div>
+        <p class="h3" style="color: #A0A0A0;">{{ api.cases }}
+        </p>
+    </div>
+</div>
+
+
+<div class="card text-white mb-3" style="background-color: rgb(23, 23, 24);">
+    <div class="card-body">
+        <p style="color: #A0A0A0;">Global</p>
+        <div class="h5">Deaths </div>
+        <p class="h3" style="color: #A0A0A0;">Cases: {{ api.deaths }}
+
+        </p>
+    </div>
+</div>
+
+<div class="card text-white mb-3" style="background-color: rgb(23, 23, 24);">
+    <div class="card-body">
+        <p style="color: #A0A0A0;">Global</p>
+        <div class="h5">Recovered: </div>
+        <p class="h3" style="color: #A0A0A0;">Cases: {{ api.recovered}}
+
+        </p>
+    </div>
+</div>
+
+
+
+
 {% endblock %}
