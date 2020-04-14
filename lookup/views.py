@@ -8,7 +8,7 @@ def home(request):
     import json
     import requests
 
-    api_request = requests.get("https://coronavirus-19-api.herokuapp.com/all")
+    api_request = requests.get("https://corona.lmao.ninja/v2/all")
 
     try:
         api = json.loads(api_request.content)
@@ -23,7 +23,7 @@ def bd(request):
     import requests
 
     api_request = requests.get(
-        "https://coronavirus-19-api.herokuapp.com/countries/Bangladesh")
+        "https://corona.lmao.ninja/v2/countries/Bangladesh")
 
     try:
         api = json.loads(api_request.content)
@@ -40,7 +40,7 @@ def countries(request):
     #     "http://www.airnowapi.org/aq/observation/zipCode/current/?format=application/json&zipCode=89129&distance=5&API_KEY=F13B331E-B5CB-4945-9EB3-A7E3ECCF6A95")
 
     api_request = requests.get(
-        "https://coronavirus-19-api.herokuapp.com/countries")
+        "https://corona.lmao.ninja/v2/countries?sort=active")
 
     load_api = []
 
